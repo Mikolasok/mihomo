@@ -296,4 +296,3 @@ journalctl -u mihomo --no-pager -n 100
 mihomo -d /usr/local/etc/mihomo -t
 ```
 
----
