@@ -2,7 +2,7 @@ mixed-port: 10801
 allow-lan: true
 bind-address: "*"
 authentication: 
-  - "yTjknKgJmd:t7W71NuJLC"
+  - "D&5gqmaW%SbFbbAW^8:BNEr7dxCA5szwI#W8g"
 skip-auth-prefixes: 
   - 127.0.0.1/8
   - ::1/128
@@ -11,7 +11,7 @@ log-level: info
 ipv6: true
 find-process-mode: strict
 external-controller: 127.0.0.1:16254
-secret: "rEfPsiAP"
+secret: "2ZfQP2pN!OwD!5h6XC"
 external-ui: ui
 external-ui-url: "https://github.com/MetaCubeX/metacubexd/archive/refs/heads/gh-pages.zip"
 profile:
@@ -87,49 +87,47 @@ sniffer:
     - "+.push.apple.com"
     - "+.icloud.com"
 proxies:
-  - name: 🇨🇦 tuic
-    server: 198.46.177.81
-    port: 443
-    type: tuic
-    uuid: a41964c0-7455-46bc-9a99-6481396a2f6a
-    password: hpmrfyfRzyOC
-    sni: bing.com
-    alpn: [h3]
-    request-timeout: 8000
-    udp-relay-mode: native
-    skip-cert-verify: false
-    congestion-controller: bbr
-  - name: 🇺🇸 vless
-    type: vless
-    server: 198.46.168.18
+  - name: 🇺🇸 DMIT
+    type: anytls
+    server: www.dpdns.org
     port: 8443
-    uuid: 1d08b7ae-996a-4609-ac96-a5b022d3f04b
-    network: tcp
-    tls: true
-    udp: true
-    flow: xtls-rprx-vision
-    servername: xgt.dpdns.org
-    reality-opts:
-      public-key: WmHzA7riX4rIcwCosYda0IM1n0AJbNE-1IhjkWLIJig
-      short-id: 316fd6a6c7c8d176
+    password: "QUEpgutax#7LQ01Mvg"
     client-fingerprint: chrome
+    udp: true
+  - name: 🇩🇪 ShanDun
+    type: anytls
+    server: www.dpdns.org
+    port: 8443
+    password: "UaG8W%5k8KeP@y!kj3"
+    client-fingerprint: chrome
+    udp: true
 proxy-groups:
   - name: Proxy
     type: select
     proxies:
-      - 🇨🇦 tuic
-      - 🇺🇸 vless
+      - 🇺🇸 DMIT
       - auto
+  - name: Binance
+    type: select
+    proxies:
+      - 🇩🇪 ShanDun
+  - name: Bybit
+    type: select
+    proxies:
+      - 🇩🇪 ShanDun
   - name: auto
     type: url-test
     proxies:
-      - 🇨🇦 tuic
-      - 🇺🇸 vless
+      - 🇺🇸 DMIT
+      - 🇩🇪 ShanDun
     url: "https://cp.cloudflare.com/generate_204"
     interval: 300
 rules:
   - RULE-SET,category_ads_all,REJECT
   - RULE-SET,private_domain,DIRECT
+  - RULE-SET,binance_domain,Binance
+  - RULE-SET,bybit_domain,Bybit
+  - RULE-SET,google_domain,Proxy
   - RULE-SET,cn_domain,DIRECT
   - RULE-SET,private_ip,DIRECT,no-resolve
   - RULE-SET,cn_ip,DIRECT
@@ -138,12 +136,25 @@ rule-anchor:
   ip: &ip {type: http, interval: 86400, behavior: ipcidr, format: mrs}
   domain: &domain {type: http, interval: 86400, behavior: domain, format: mrs}
 rule-providers:
+  google_domain:
+    type: inline
+    behavior: domain
+    format: yaml
+    payload:
+      - "+.googleapis.cn"
+      - "+.xn--ngstr-lra8j.com"
   private_domain:
     <<: *domain
     url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/private.mrs"
   cn_domain:
     <<: *domain
     url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/cn.mrs"
+  binance_domain:
+    <<: *domain
+    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/binance.mrs"
+  bybit_domain:
+    <<: *domain
+    url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/bybit.mrs"
   category_ads_all:
     <<: *domain
     url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/category-ads-all.mrs"
