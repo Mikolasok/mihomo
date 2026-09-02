@@ -109,18 +109,39 @@ vim /usr/local/etc/mihomo/config.yaml
 log-level: info
 
 listeners:
-  - name: anytls-in
+  - name: anytls-in-1
     type: anytls
     port: 10818
     listen: 0.0.0.0
 
-    users:
-      username1: "password1"
-      username2: "password2"
+    jls-config:
+      enable: true
 
-    certificate: /var/lib/caddy/.local/share/caddy/certificates/acme-v02.api.letsencrypt.org-directory/luna.example.com/luna.example.com.crt
+      users:
+        - username: username1
+          password: password1
 
-    private-key: /var/lib/caddy/.local/share/caddy/certificates/acme-v02.api.letsencrypt.org-directory/luna.example.com/luna.example.com.key
+        - username: username2
+          password: password2
+
+      # 未认证连接回落到 Caddy
+      dest: 127.0.0.1:443
+
+      # Caddy 网站域名
+      sni: your-domain.com
+
+      alpn:
+        - h2
+        - http/1.1
+
+      rate-limit: 0
+
+    # ECH
+    ech-key: |
+      -----BEGIN ECH KEYS-----
+      这里放 mihomo generate ech-keypair
+      生成的 ECH 私钥
+      -----END ECH KEYS-----
 
     padding-scheme: |
       stop=8
