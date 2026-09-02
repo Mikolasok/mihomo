@@ -114,8 +114,8 @@ listeners:
     listen: 0.0.0.0
     port: 10818
     users:
-      username1: password1
-      username2: password2
+      username1: "password1"
+      username2: "password2"
     # 开启ech（可由 mihomo generate ech-keypair <明文域名> 生成）
     ech-key: |
       -----BEGIN ECH KEYS-----
