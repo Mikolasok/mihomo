@@ -118,11 +118,11 @@ listeners:
       enable: true
 
       users:
-        - username: username1
-          password: password1
+        - username: "username1"
+          password: "password1"
 
-        - username: username2
-          password: password2
+        - username: "username2"
+          password: "password2"
 
       # 未认证连接回落到 Caddy
       dest: 127.0.0.1:443
