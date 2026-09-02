@@ -107,14 +107,6 @@ vim /usr/local/etc/mihomo/config.yaml
 
 ```yaml
 log-level: info
-tls:
-  # 开启ech（可由 mihomo generate ech-keypair <明文域名> 生成）
-  ech-key: |-
-    -----BEGIN ECH KEYS-----
-    ACATwY30o/RKgD6hgeQxwrSiApLaCgU+HKh7B6SUrAHaDwBD/g0APwAAIAAgHjzK
-    madSJjYQIf9o1N5GXjkW4DEEeb17qMxHdwMdNnwADAABAAEAAQACAAEAAwAIdGVz
-    dC5jb20AAA==
-    -----END ECH KEYS-----
 
 listeners:
   - name: anytls-in-1
@@ -124,6 +116,13 @@ listeners:
     users:
       username1: password1
       username2: password2
+    # 开启ech（可由 mihomo generate ech-keypair <明文域名> 生成）
+    ech-key: |
+      -----BEGIN ECH KEYS-----
+      ACATwY30o/RKgD6hgeQxwrSiApLaCgU+HKh7B6SUrAHaDwBD/g0APwAAIAAgHjzK
+      madSJjYQIf9o1N5GXjkW4DEEeb17qMxHdwMdNnwADAABAAEAAQACAAEAAwAIdGVz
+      dC5jb20AAA==
+      -----END ECH KEYS-----
     jls-config:
       enable: true
       users:
