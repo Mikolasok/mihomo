@@ -107,43 +107,34 @@ vim /usr/local/etc/mihomo/config.yaml
 
 ```yaml
 log-level: info
+tls:
+  # 开启ech（可由 mihomo generate ech-keypair <明文域名> 生成）
+  ech-key: |-
+    -----BEGIN ECH KEYS-----
+    ACATwY30o/RKgD6hgeQxwrSiApLaCgU+HKh7B6SUrAHaDwBD/g0APwAAIAAgHjzK
+    madSJjYQIf9o1N5GXjkW4DEEeb17qMxHdwMdNnwADAABAAEAAQACAAEAAwAIdGVz
+    dC5jb20AAA==
+    -----END ECH KEYS-----
 
 listeners:
   - name: anytls-in-1
     type: anytls
-    port: 10818
     listen: 0.0.0.0
-
+    port: 10818
+    users:
+      username1: password1
+      username2: password2
     jls-config:
       enable: true
-
       users:
-        - username: "username1"
-          password: "password1"
-
-        - username: "username2"
-          password: "password2"
-
-      # 未认证连接回落到 Caddy
+        - username: "username"
+          password: "password"
       dest: 127.0.0.1:443
-
-      # Caddy 网站域名
       sni: your-domain.com
-
       alpn:
         - h2
         - http/1.1
-
       rate-limit: 0
-
-    # 开启ech（可由 mihomo generate ech-keypair <明文域名> 生成）
-    ech-key: |
-      -----BEGIN ECH KEYS-----
-      ACATwY30o/RKgD6hgeQxwrSiApLaCgU+HKh7B6SUrAHaDwBD/g0APwAAIAAgHjzK
-      madSJjYQIf9o1N5GXjkW4DEEeb17qMxHdwMdNnwADAABAAEAAQACAAEAAwAIdGVz
-      dC5jb20AAA==
-      -----END ECH KEYS-----
-
     padding-scheme: |
       stop=8
       0=30-30
@@ -162,8 +153,7 @@ proxies:
 
 > **注意：**
 >
-> * `luna.example.com` 请替换为你的实际域名。
-> * `certificate` 和 `private-key` 必须对应实际存在的证书文件。
+> * `your-domain.com` 请替换为你的实际域名。
 > * `username1`、`username2` 以及对应密码请根据实际需求修改。
 > * 端口 `10818` 可以根据实际需求调整。
 
