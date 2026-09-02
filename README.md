@@ -136,11 +136,12 @@ listeners:
 
       rate-limit: 0
 
-    # ECH
+    # 开启ech（可由 mihomo generate ech-keypair <明文域名> 生成）
     ech-key: |
       -----BEGIN ECH KEYS-----
-      这里放 mihomo generate ech-keypair
-      生成的 ECH 私钥
+      ACATwY30o/RKgD6hgeQxwrSiApLaCgU+HKh7B6SUrAHaDwBD/g0APwAAIAAgHjzK
+      madSJjYQIf9o1N5GXjkW4DEEeb17qMxHdwMdNnwADAABAAEAAQACAAEAAwAIdGVz
+      dC5jb20AAA==
       -----END ECH KEYS-----
 
     padding-scheme: |
