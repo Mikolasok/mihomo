@@ -14,6 +14,13 @@ external-controller: 127.0.0.1:16254
 secret: "2ZfQP2pN!OwD!5h6XC"
 external-ui: ui
 external-ui-url: "https://github.com/MetaCubeX/metacubexd/archive/refs/heads/gh-pages.zip"
+tls:
+  ech-key: |-
+    -----BEGIN ECH KEYS-----
+    ACATwY30o/RKgD6hgeQxwrSiApLaCgU+HKh7B6SUrAHaDwBD/g0APwAAIAAgHjzK
+    madSJjYQIf9o1N5GXjkW4DEEeb17qMxHdwMdNnwADAABAAEAAQACAAEAAwAIdGVz
+    dC5jb20AAA==
+    -----END ECH KEYS-----
 profile:
   store-selected: true
   store-fake-ip: true
@@ -89,18 +96,36 @@ sniffer:
 proxies:
   - name: 🇺🇸 DMIT
     type: anytls
-    server: www.dpdns.org
-    port: 8443
-    password: "QUEpgutax#7LQ01Mvg"
+    server: example.com
+    port: 443
+    password: "password"
     client-fingerprint: chrome
     udp: true
+    sni: example.com
+    alpn:
+      - h2
+      - http/1.1
+    skip-cert-verify: false
+    name-cert-verify: example.com
+    jls-opts:
+      username: "username"
+      password: "password"
   - name: 🇩🇪 ShanDun
     type: anytls
-    server: www.dpdns.org
-    port: 8443
-    password: "UaG8W%5k8KeP@y!kj3"
+    server: example.com
+    port: 443
+    password: "password"
     client-fingerprint: chrome
     udp: true
+    sni: example.com
+    alpn:
+      - h2
+      - http/1.1
+    skip-cert-verify: false
+    name-cert-verify: example.com
+    jls-opts:
+      username: "username"
+      password: "password"
 proxy-groups:
   - name: Proxy
     type: select
