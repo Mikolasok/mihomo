@@ -14,13 +14,6 @@ external-controller: 127.0.0.1:16254
 secret: "2ZfQP2pN!OwD!5h6XC"
 external-ui: ui
 external-ui-url: "https://github.com/MetaCubeX/metacubexd/archive/refs/heads/gh-pages.zip"
-tls:
-  ech-key: |-
-    -----BEGIN ECH KEYS-----
-    ACATwY30o/RKgD6hgeQxwrSiApLaCgU+HKh7B6SUrAHaDwBD/g0APwAAIAAgHjzK
-    madSJjYQIf9o1N5GXjkW4DEEeb17qMxHdwMdNnwADAABAAEAAQACAAEAAwAIdGVz
-    dC5jb20AAA==
-    -----END ECH KEYS-----
 profile:
   store-selected: true
   store-fake-ip: true
@@ -107,6 +100,12 @@ proxies:
       - http/1.1
     skip-cert-verify: false
     name-cert-verify: example.com
+    ech-key: |-
+      -----BEGIN ECH KEYS-----
+      ACATwY30o/RKgD6hgeQxwrSiApLaCgU+HKh7B6SUrAHaDwBD/g0APwAAIAAgHjzK
+      madSJjYQIf9o1N5GXjkW4DEEeb17qMxHdwMdNnwADAABAAEAAQACAAEAAwAIdGVz
+      dC5jb20AAA==
+      -----END ECH KEYS-----
     jls-opts:
       username: "username"
       password: "password"
@@ -123,6 +122,12 @@ proxies:
       - http/1.1
     skip-cert-verify: false
     name-cert-verify: example.com
+    ech-key: |-
+      -----BEGIN ECH KEYS-----
+      ACATwY30o/RKgD6hgeQxwrSiApLaCgU+HKh7B6SUrAHaDwBD/g0APwAAIAAgHjzK
+      madSJjYQIf9o1N5GXjkW4DEEeb17qMxHdwMdNnwADAABAAEAAQACAAEAAwAIdGVz
+      dC5jb20AAA==
+      -----END ECH KEYS-----
     jls-opts:
       username: "username"
       password: "password"
