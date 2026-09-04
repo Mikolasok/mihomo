@@ -160,7 +160,7 @@ proxies:
 
 ## 6. 生成强密码
 
-### 6.1 随机生成 9 位密码
+### 6.1 随机生成 9 位用户名
 ```
 { tr -dc 'A-Z' </dev/urandom | head -c1; tr -dc 'a-z' </dev/urandom | head -c1; tr -dc '0-9' </dev/urandom | head -c1; tr -dc 'A-Za-z0-9' </dev/urandom | head -c6; } | fold -w1 | shuf | tr -d '\n'; echo
 ```
