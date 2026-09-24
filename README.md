@@ -63,6 +63,7 @@ CapabilityBoundingSet=CAP_NET_ADMIN CAP_NET_RAW CAP_NET_BIND_SERVICE CAP_SYS_TIM
 AmbientCapabilities=CAP_NET_ADMIN CAP_NET_RAW CAP_NET_BIND_SERVICE CAP_SYS_TIME CAP_SYS_PTRACE CAP_DAC_READ_SEARCH CAP_DAC_OVERRIDE
 Restart=always
 ExecStartPre=/usr/bin/sleep 1s
+Environment=SAFE_PATHS=/var/lib/caddy/.local/share/caddy/
 ExecStart=/usr/local/bin/mihomo -d /usr/local/etc/mihomo
 ExecReload=/bin/kill -HUP $MAINPID
 
