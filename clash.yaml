@@ -100,12 +100,9 @@ proxies:
       - http/1.1
     skip-cert-verify: false
     name-cert-verify: example.com
-    ech-key: |-
-      -----BEGIN ECH KEYS-----
-      ACATwY30o/RKgD6hgeQxwrSiApLaCgU+HKh7B6SUrAHaDwBD/g0APwAAIAAgHjzK
-      madSJjYQIf9o1N5GXjkW4DEEeb17qMxHdwMdNnwADAABAAEAAQACAAEAAwAIdGVz
-      dC5jb20AAA==
-      -----END ECH KEYS-----
+    ech-opts:
+      enable: true
+      config: AEn+DQBFKwAgACABWIHUGj4u+PIggYXcR5JF0gYk3dCRioBW8uJq9H4mKAAIAAEAAQABAANAEnB1YmxpYy50bHMtZWNoLmRldgAA
     jls-opts:
       username: "username"
       password: "password"
