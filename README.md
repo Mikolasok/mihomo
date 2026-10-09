@@ -5,7 +5,7 @@
 下载并安装 Mihomo：
 
 ```bash
-wget -O /usr/local/bin/mihomo.gz https://github.com/MetaCubeX/mihomo/releases/download/v1.19.31/mihomo-linux-amd64-compatible-v1.19.31.gz \
+wget -O /usr/local/bin/mihomo.gz https://github.com/MetaCubeX/mihomo/releases/download/v1.19.32/mihomo-linux-amd64-compatible-v1.19.32.gz \
 && gunzip /usr/local/bin/mihomo.gz \
 && chmod +x /usr/local/bin/mihomo
 ```
