@@ -145,19 +145,25 @@ listeners:
       5=500-1000
       6=500-1000
       7=500-1000
-
+  - name: vless-in-1
+    type: vless
+    port: 8443
+    listen: 0.0.0.0
+    users:
+      - username: 1
+        uuid: 9d0cb9d0-964f-4ef6-897d-6c6b3ccf9e68
+        flow: xtls-rprx-vision
+    reality-config:
+      dest: amd.com:443
+      private-key: jNXHt1yRo0vDuchQlIP6Z0ZvjT3KtzVI-T4E7RoLJS0 # 可由 mihomo generate reality-keypair 命令生成
+      short-id:
+        - 0123456789abcdef
+      server-names:
+        - amd.com
 proxies:
   - name: "direct"
     type: direct
 ```
-
-> **注意：**
->
-> * `your-domain.com` 请替换为你的实际域名。
-> * `username1`、`username2` 以及对应密码请根据实际需求修改。
-> * 端口 `10818` 可以根据实际需求调整。
-
----
 
 ## 6. 生成强密码
 
