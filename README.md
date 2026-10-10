@@ -166,13 +166,22 @@ proxies:
 ```
 
 ## 6. 生成强密码
+### 6.1 随机生成 UUID
+```
+cat /proc/sys/kernel/random/uuid
+```
 
-### 6.1 随机生成 9 位用户名
+### 6.2 随机生成 short-id
+```
+openssl rand -hex 8
+```
+
+### 6.3 随机生成 9 位用户名
 ```
 { tr -dc 'A-Z' </dev/urandom | head -c1; tr -dc 'a-z' </dev/urandom | head -c1; tr -dc '0-9' </dev/urandom | head -c1; tr -dc 'A-Za-z0-9' </dev/urandom | head -c6; } | fold -w1 | shuf | tr -d '\n'; echo
 ```
 
-### 6.2 关闭 Bash 历史展开
+### 6.4 关闭 Bash 历史展开
 
 由于密码生成字符中包含 `!`，建议先关闭 Bash 的历史展开：
 
@@ -180,7 +189,7 @@ proxies:
 set +H
 ```
 
-### 6.3 生成随机强密码
+### 6.5 生成随机强密码
 
 执行：
 
@@ -206,7 +215,7 @@ A7@kP2!xQ9#mL4$vNz
 
 > **建议：** 生成密码后，将密码保存到安全的密码管理器中，不要直接记录在公开文档或聊天记录中。
 
-### 6.4 恢复 Bash 历史展开
+### 6.6 恢复 Bash 历史展开
 
 密码生成完成后执行：
 
