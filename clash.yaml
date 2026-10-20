@@ -128,11 +128,26 @@ proxies:
     jls-opts:
       username: "username"
       password: "password"
+  - name: 🇩🇪 ShanDun
+    type: vless
+    server: aa.xgt.dpdns.org
+    port: 8443
+    uuid: dfc1a0f1-fb8b-4d61-8246-3a39d6efa78f
+    network: tcp
+    tls: true
+    udp: true
+    flow: xtls-rprx-vision
+    servername: amd.com
+    reality-opts:
+      public-key: trU3npSjXJrzN0xMNUp9X4xU8F8SZzoCbDopH44H0wQ
+      short-id: 3b39148315d9da6b
+    client-fingerprint: chrome
 proxy-groups:
   - name: Proxy
     type: select
     proxies:
-      - 🇺🇸 DMIT
+      - 🇺🇸 ShanDun
+      - 🇩🇪 ShanDun
       - auto
   - name: Binance
     type: select
@@ -145,13 +160,14 @@ proxy-groups:
   - name: auto
     type: url-test
     proxies:
-      - 🇺🇸 DMIT
+      - 🇺🇸 ShanDun
       - 🇩🇪 ShanDun
     url: "https://cp.cloudflare.com/generate_204"
     interval: 300
 rules:
   - RULE-SET,category_ads_all,REJECT
   - RULE-SET,private_domain,DIRECT
+  - RULE-SET,gczl_domain,DIRECT
   - RULE-SET,binance_domain,Binance
   - RULE-SET,bybit_domain,Bybit
   - RULE-SET,google_domain,Proxy
@@ -170,6 +186,12 @@ rule-providers:
     payload:
       - "+.googleapis.cn"
       - "+.xn--ngstr-lra8j.com"
+  gczl_domain:
+    type: inline
+    behavior: domain
+    format: yaml
+    payload:
+      - "+.gczl360.com"
   private_domain:
     <<: *domain
     url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/private.mrs"
