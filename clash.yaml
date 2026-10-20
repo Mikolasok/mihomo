@@ -130,7 +130,7 @@ proxies:
       password: "password"
   - name: 🇩🇪 ShanDun
     type: vless
-    server: aa.xgt.dpdns.org
+    server: example.com
     port: 8443
     uuid: dfc1a0f1-fb8b-4d61-8246-3a39d6efa78f
     network: tcp
