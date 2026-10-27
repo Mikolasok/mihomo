@@ -63,7 +63,7 @@ CapabilityBoundingSet=CAP_NET_ADMIN CAP_NET_RAW CAP_NET_BIND_SERVICE CAP_SYS_TIM
 AmbientCapabilities=CAP_NET_ADMIN CAP_NET_RAW CAP_NET_BIND_SERVICE CAP_SYS_TIME CAP_SYS_PTRACE CAP_DAC_READ_SEARCH CAP_DAC_OVERRIDE
 Restart=always
 ExecStartPre=/usr/bin/sleep 1s
-Environment=SAFE_PATHS=/var/lib/caddy/.local/share/caddy/
+Environment=SAFE_PATHS=/var/lib/caddy/.local/share/caddy
 ExecStart=/usr/local/bin/mihomo -d /usr/local/etc/mihomo
 ExecReload=/bin/kill -HUP $MAINPID
 
@@ -160,6 +160,28 @@ listeners:
         - 0123456789abcdef
       server-names:
         - amd.com
+  - name: tuic-in-1
+    type: tuic
+    port: 7443
+    listen: 0.0.0.0
+    users:
+      UUID1: "PASSWORD1"
+      UUID2: "PASSWORD2"
+    certificate: "/var/lib/caddy/.local/share/caddy/certificates/acme-v02.api.letsencrypt.org-directory/your-domain.com/your-domain.com.crt"
+    private-key: "/var/lib/caddy/.local/share/caddy/certificates/acme-v02.api.letsencrypt.org-directory/your-domain.com/your-domain.com.key"
+    ech-key: |
+      -----BEGIN ECH KEYS-----
+      ACATwY30o/RKgD6hgeQxwrSiApLaCgU+HKh7B6SUrAHaDwBD/g0APwAAIAAgHjzK
+      madSJjYQIf9o1N5GXjkW4DEEeb17qMxHdwMdNnwADAABAAEAAQACAAEAAwAIdGVz
+      dC5jb20AAA==
+      -----END ECH KEYS-----
+    congestion-controller: bbr
+    bbr-profile: "standard"
+    alpn:
+      - h3
+    max-idle-time: 15000
+    authentication-timeout: 1000
+    max-udp-relay-packet-size: 1500
 proxies:
   - name: "direct"
     type: direct
